@@ -38,6 +38,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("assets/images/SpriteNave.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/test.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -135,7 +139,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "5",
+			build: "8",
 			company: "chikoritos",
 			file: "InvaderV2",
 			fps: 60,
