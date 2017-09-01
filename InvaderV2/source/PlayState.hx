@@ -27,7 +27,7 @@ class PlayState extends FlxState
       var a = new Alien(50 + (i % 15) * 32, 24 + Std.int(i / 15) * 32, color[Std.int(i / 15)]); 
       alien.add(a); 
     } 
-     player = new Nave(32, 16);
+    player = new Nave(32, 16);
     add(alien); 
 	add(player);
 

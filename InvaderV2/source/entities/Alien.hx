@@ -30,22 +30,18 @@ class Alien extends FlxSprite
 	}
 	override public function update(elapsed:Float):Void
 	{
-		if (x < origen - 20)
+		if (x < origen - 5)
 		{
-			x = origen - 20;
+			x = origen - 5;
 			velocity.x = -velocity.x;
 			y = y + 5;
 		}
-		if (x > origen + 80)
+		if (x > origen + 48)
 		{
-			x = origen + 80;
+			x = origen + 48;
 			velocity.x = -velocity.x;
-		}
-		if (x == origen + 80)
-		{
 			y = y + 5;
 		}
-		
 		super.update(elapsed);
 	}
-}
+} 
