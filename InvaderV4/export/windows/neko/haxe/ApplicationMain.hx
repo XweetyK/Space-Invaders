@@ -515,7 +515,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "8",
+			build: "70",
 			company: "chikoritos",
 			file: "InvaderV2",
 			fps: 60,

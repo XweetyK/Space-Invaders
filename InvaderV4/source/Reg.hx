@@ -2,7 +2,7 @@ package;
 
 /**
  * ...
- * @author nico
+ * @author El ShickOrITHO
  */
 class Reg 
 {
@@ -13,5 +13,7 @@ class Reg
 	static public var velocidadPlayerRIGHT:Int = 30;
 	static public var velocidadPlayerLEFT:Int  =-30;
 	static public var velocidadPlayerIDLE:Int  = 0;
+	//Bala Aliens
 	static public var balaCont:Int = 0;
+	static public var cantMaxBalas:Int = 2;
 }

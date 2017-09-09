@@ -41,6 +41,7 @@ class PlayState extends FlxState
 	
 	function collision() 
 	{
+		//Collision Playerbala - Aliens
 		for (i in 0...alien.members.length)
 		{
 			if (FlxG.collide(player.Playerbala,alien.members[i]))
@@ -54,6 +55,13 @@ class PlayState extends FlxState
 			if (FlxG.collide(player, alien.members[i]))
 			{
 				// player.kill(); NO FUNCA, IR DIRECTO A GAME OVER
+			}
+		}
+		for (i in 0...alien.members.length)
+		{
+		if (FlxG.collide(alien.members[i].disp,player))
+			{
+				player.kill();
 			}
 		}
 	}

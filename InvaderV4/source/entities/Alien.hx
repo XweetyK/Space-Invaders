@@ -17,6 +17,7 @@ class Alien extends FlxSprite
 	
 	private var origen:Int;
 	private var dispClock:Float;
+	public var disp(get, null):AlienBala = new AlienBala();
 	
 	public function new(X:Int, Y:Int, Color:Int)
 	{
@@ -56,11 +57,10 @@ class Alien extends FlxSprite
 	{ // disparo aleatorio
 		if (dispClock <= 2)
 		{
-			if (Reg.balaCont < 1)
+			if (Reg.balaCont < Reg.cantMaxBalas)
 			{
 				Reg.balaCont ++;
 				resetShotClock();
-				var disp:AlienBala = new AlienBala();
 				disp.x = x;
 				disp.y = y;
 				FlxG.state.add(disp);
@@ -70,5 +70,10 @@ class Alien extends FlxSprite
 	private function resetShotClock():Void
 	{ // numero random para disparo aleatorio
 		dispClock = 1 + FlxG.random.float() * 30;
+	}
+	
+	function get_disp():AlienBala 
+	{
+		return disp;
 	}
 }
