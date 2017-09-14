@@ -34,6 +34,14 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("assets/images/disp.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/GameOverImg.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/images-go-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -147,7 +155,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "9",
+			build: "114",
 			company: "chikoritos",
 			file: "InvaderV2",
 			fps: 60,

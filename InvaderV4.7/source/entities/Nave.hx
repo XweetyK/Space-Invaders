@@ -13,15 +13,15 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 
 class Nave extends FlxSprite
 {
-	public var Playerbala(get, null):Bala = new Bala();
+	public var PlayerBala(get, null):Bala = new Bala();
 	public function new(X:Int, Y:Int)
 	{
 		super(X, Y);
 		//Cargar gráfico
 		loadGraphic(AssetPaths.PlayerNave__png);
 		//Crear y matar bala para poder revivirla
-		FlxG.state.add(Playerbala);
-		Playerbala.kill();
+		FlxG.state.add(PlayerBala);
+		PlayerBala.kill();
 	}
 
 	override public function update(elapsed:Float):Void
@@ -46,11 +46,11 @@ class Nave extends FlxSprite
 	// Disparar player
 	function playerShoot()
 	{
-		if (FlxG.keys.justPressed.SPACE && !Playerbala.alive)
+		if (FlxG.keys.justPressed.SPACE && !PlayerBala.alive)
 		{
-			Playerbala.reset(this.x, this.y -3);
+			PlayerBala.reset(this.x, this.y -3);
 			// Velocidad Bala
-			Playerbala.velocity.y = Reg.velocidadBala;
+			PlayerBala.velocity.y = Reg.velocidadBala;
 		}
 	}
 	// Movimiento player
@@ -73,9 +73,9 @@ class Nave extends FlxSprite
 		}
 	}
 	// Getter bala
-	function get_Playerbala():Bala 
+	function get_PlayerBala():Bala 
 	{
-		return Playerbala;
+		return PlayerBala;
 	}
 
 }

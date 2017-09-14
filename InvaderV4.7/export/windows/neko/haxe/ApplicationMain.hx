@@ -26,7 +26,7 @@ class ApplicationMain {
 	
 	public static function main () {
 		
-		flash.Lib.setPackage ("chikoritos", "InvaderV2", "com.example.myapp", "0.0.1");
+		flash.Lib.setPackage ("chikoritos", "InvaderV7", "com.example.myapp", "0.7");
 		
 		
 		#if ios
@@ -40,7 +40,7 @@ class ApplicationMain {
 		telemetryConfig = new hxtelemetry.HxTelemetry.Config ();
 		telemetryConfig.allocations = true;
 		telemetryConfig.host = "localhost";
-		telemetryConfig.app_name = "InvaderV2";
+		telemetryConfig.app_name = "InvaderV7";
 		#end
 		
 		
@@ -141,7 +141,7 @@ class ApplicationMain {
 			(false ? flash.Lib.FULLSCREEN : 0) |
 			(0 == 4 ? flash.Lib.HW_AA_HIRES : 0) |
 			(0 == 2 ? flash.Lib.HW_AA : 0),
-			"InvaderV2",
+			"InvaderV7",
 			null
 			#if mobile, ScaledStage #end
 		);
@@ -318,14 +318,14 @@ class ApplicationMain {
 	public static function main () {
 		
 		#if openfl
-		flash.Lib.setPackage ("chikoritos", "InvaderV2", "com.example.myapp", "0.0.1");
+		flash.Lib.setPackage ("chikoritos", "InvaderV7", "com.example.myapp", "0.7");
 		
 		#end
 		
 		wx.App.boot (function () {
 			
 			
-			frame = wx.Frame.create (null, null, "InvaderV2", null, { width: 480, height: 432 });
+			frame = wx.Frame.create (null, null, "InvaderV7", null, { width: 480, height: 432 });
 			
 			
 			#if openfl
@@ -515,14 +515,14 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "95",
+			build: "167",
 			company: "chikoritos",
-			file: "InvaderV2",
+			file: "InvaderV7",
 			fps: 60,
-			name: "InvaderV2",
+			name: "InvaderV7",
 			orientation: "landscape",
 			packageName: "com.example.myapp",
-			version: "0.0.1",
+			version: "0.7",
 			windows: [
 				
 				{
@@ -537,7 +537,7 @@ class ApplicationMain {
 					parameters: "{}",
 					resizable: true,
 					stencilBuffer: false,
-					title: "InvaderV2",
+					title: "InvaderV7",
 					vsync: true,
 					width: 480,
 					x: null,

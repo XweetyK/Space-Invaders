@@ -9,6 +9,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxColor;
+import flixel.text.FlxText;
 import entities.Alien;
 
 class PlayState extends FlxState
@@ -16,7 +17,9 @@ class PlayState extends FlxState
 	private var alien:FlxTypedGroup<Alien>;
 	private var player:Nave;
 	private var a:Alien;
-	private var playerLose:FlxSprite;
+	private var playerLose:FlxText;
+	private var playerContVidas:FlxText;
+	private var playerVidas:Int;
 	override public function create():Void
 	{
 		super.create();
@@ -28,28 +31,41 @@ class PlayState extends FlxState
 			a = new Alien(10 + (i % 10) * 10, 12 + Std.int(i / 10) * 10, color[Std.int(i / 10)]);
 			alien.add(a);
 		}
-		playerLose = new FlxSprite();
-		playerLose.loadGraphic(AssetPaths.GameOverImg__png);
-		player = new Nave(32, 132);
+		player = new Nave(72+8, 132);
 		add(alien);
 		add(player);
+		playerLose = new FlxText(1, 65, 480, "You died! Press R to restart", 9);
+		playerContVidas = new FlxText(1, 1, 480, "", 9);
+		add(playerContVidas);
 		add(playerLose);
 		playerLose.kill();
-		
+		playerVidas = Reg.cantVidas;
 	}
 
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		//Texto contador de vidas
+		playerContVidas.text = "Vidas: " + playerVidas;
 		collision();
 	}
-	
-	// Funcion no implementada
-	function gameOver() 
+
+	//Ocurre por cada muerte del player
+	function playerDeath() 
 	{
-		if (!playerLose.alive)
+		player.kill(); 
+		playerVidas -= 1;
+		
+		if (playerVidas > 0)
 		{
-		playerLose.revive();
+			player.revive();
+			player.x = 72+8;
+			player.y = 132;
+		}
+		else
+		{
+			cleanScreen();
+			playerLose.revive();
 		}
 	}
 	
@@ -58,26 +74,40 @@ class PlayState extends FlxState
 		//Collision Playerbala - Aliens
 		for (i in 0...alien.members.length)
 		{
-			if (FlxG.collide(player.Playerbala,alien.members[i]))
+			if (FlxG.overlap(player.PlayerBala,alien.members[i]))
 			{
 				alien.members[i].kill();
-				player.Playerbala.kill();
+				player.PlayerBala.kill();
 			}
 		}
+		//Collision player - Aliens
 		for (i in 0...alien.members.length)
 		{
 			if (FlxG.overlap(player, alien.members[i]))
 			{
-				player.kill(); 
+				alien.members[i].kill();
+				playerDeath();
 			}
 		}
+		//Collision Alien.disp - player
 		for (i in 0...alien.members.length)
 		{
-		if (FlxG.collide(alien.members[i].disp,player))
+		if (FlxG.overlap(alien.members[i].disp,player))
 			{
-				player.kill();
+				playerDeath();
 			}
 		}
+	}
+	
+	//Mata los aliens, las balas de los aliens y las balas del player
+	function cleanScreen():Void 
+	{
+		for (i in 0...alien.members.length)
+		{
+			alien.members[i].disp.kill();
+		}
+		alien.kill();
+		player.PlayerBala.kill();
 	}
 
 }
