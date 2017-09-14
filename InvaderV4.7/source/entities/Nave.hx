@@ -14,6 +14,7 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 class Nave extends FlxSprite
 {
 	public var PlayerBala(get, null):Bala = new Bala();
+	public var playerScore(get, null):Int;
 	public function new(X:Int, Y:Int)
 	{
 		super(X, Y);
@@ -22,6 +23,8 @@ class Nave extends FlxSprite
 		//Crear y matar bala para poder revivirla
 		FlxG.state.add(PlayerBala);
 		PlayerBala.kill();
+		//Setear score a 0
+		playerScore = 0;
 	}
 
 	override public function update(elapsed:Float):Void
@@ -76,6 +79,16 @@ class Nave extends FlxSprite
 	function get_PlayerBala():Bala 
 	{
 		return PlayerBala;
+	}
+	// Getter score
+	function get_playerScore():Int 
+	{
+		return playerScore;
+	}
+	// Anadir score
+	public function playerAddScore(points:Int):Void 
+	{
+		playerScore +=  points;
 	}
 
 }

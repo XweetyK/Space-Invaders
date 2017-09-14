@@ -19,6 +19,7 @@ class PlayState extends FlxState
 	private var a:Alien;
 	private var playerLose:FlxText;
 	private var playerContVidas:FlxText;
+	private var playerContScore:FlxText;
 	private var playerVidas:Int;
 	override public function create():Void
 	{
@@ -36,7 +37,9 @@ class PlayState extends FlxState
 		add(player);
 		playerLose = new FlxText(1, 65, 480, "You died! Press R to restart", 9);
 		playerContVidas = new FlxText(1, 1, 480, "", 9);
+		playerContScore = new FlxText(1,125, 480, "", 8);
 		add(playerContVidas);
+		add(playerContScore);
 		add(playerLose);
 		playerLose.kill();
 		playerVidas = Reg.cantVidas;
@@ -46,7 +49,9 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		//Texto contador de vidas
-		playerContVidas.text = "Vidas: " + playerVidas;
+		playerContVidas.text = "Lifes: " + playerVidas;
+		//Texto contador de score
+		playerContScore.text = "Score: " + player.playerScore;
 		collision();
 	}
 
@@ -78,6 +83,7 @@ class PlayState extends FlxState
 			{
 				alien.members[i].kill();
 				player.PlayerBala.kill();
+				player.playerAddScore(25);
 			}
 		}
 		//Collision player - Aliens
@@ -87,6 +93,7 @@ class PlayState extends FlxState
 			{
 				alien.members[i].kill();
 				playerDeath();
+				player.playerAddScore(25);
 			}
 		}
 		//Collision Alien.disp - player
