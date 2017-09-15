@@ -63,6 +63,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -74,12 +75,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/images/barricade.png", __ASSET__assets_images_barricade_png);
+		type.set ("assets/images/barricade.png", AssetType.IMAGE);
 		className.set ("assets/images/disp.png", __ASSET__assets_images_disp_png);
 		type.set ("assets/images/disp.png", AssetType.IMAGE);
-		className.set ("assets/images/GameOverImg.png", __ASSET__assets_images_gameoverimg_png);
-		type.set ("assets/images/GameOverImg.png", AssetType.IMAGE);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		className.set ("assets/images/ovni.png", __ASSET__assets_images_ovni_png);
+		type.set ("assets/images/ovni.png", AssetType.IMAGE);
 		className.set ("assets/images/PlayerNave.png", __ASSET__assets_images_playernave_png);
 		type.set ("assets/images/PlayerNave.png", AssetType.IMAGE);
 		className.set ("assets/images/SpriteBala.png", __ASSET__assets_images_spritebala_png);
@@ -113,11 +116,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
-		id = "assets/images/disp.png";
+		id = "assets/images/barricade.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
-		id = "assets/images/GameOverImg.png";
+		id = "assets/images/disp.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -125,6 +128,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/ovni.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/PlayerNave.png";
 		path.set (id, id);
 		
@@ -194,14 +201,17 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		
+		className.set ("assets/images/barricade.png", __ASSET__assets_images_barricade_png);
+		type.set ("assets/images/barricade.png", AssetType.IMAGE);
+		
 		className.set ("assets/images/disp.png", __ASSET__assets_images_disp_png);
 		type.set ("assets/images/disp.png", AssetType.IMAGE);
 		
-		className.set ("assets/images/GameOverImg.png", __ASSET__assets_images_gameoverimg_png);
-		type.set ("assets/images/GameOverImg.png", AssetType.IMAGE);
-		
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		
+		className.set ("assets/images/ovni.png", __ASSET__assets_images_ovni_png);
+		type.set ("assets/images/ovni.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/PlayerNave.png", __ASSET__assets_images_playernave_png);
 		type.set ("assets/images/PlayerNave.png", AssetType.IMAGE);
@@ -884,9 +894,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if flash
 
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_images_barricade_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_disp_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_images_gameoverimg_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_images_ovni_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_playernave_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_spritebala_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_spritenave_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -915,6 +926,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
 
@@ -929,9 +941,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.Bytes {}
+@:image("assets/images/barricade.png") #if display private #end class __ASSET__assets_images_barricade_png extends lime.graphics.Image {}
 @:image("assets/images/disp.png") #if display private #end class __ASSET__assets_images_disp_png extends lime.graphics.Image {}
-@:image("assets/images/GameOverImg.png") #if display private #end class __ASSET__assets_images_gameoverimg_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.Bytes {}
+@:image("assets/images/ovni.png") #if display private #end class __ASSET__assets_images_ovni_png extends lime.graphics.Image {}
 @:image("assets/images/PlayerNave.png") #if display private #end class __ASSET__assets_images_playernave_png extends lime.graphics.Image {}
 @:image("assets/images/SpriteBala.png") #if display private #end class __ASSET__assets_images_spritebala_png extends lime.graphics.Image {}
 @:image("assets/images/SpriteNave.png") #if display private #end class __ASSET__assets_images_spritenave_png extends lime.graphics.Image {}

@@ -12,15 +12,17 @@
 -D openfl-next
 -D FLX_NO_MOUSE
 -D tools=2.9.1
+-D FLX_NO_DEBUG
 -D flash-use-stage
 -D no-compilation
+-D NAPE_RELEASE_BUILD
 -D openfl-flash
 -D fdb
 -D web
 --macro flixel.system.macros.FlxDefines.run()
 -swf-lib export/flash/obj/assets.swf
 -swf-version 11.8
--swf export/flash/bin/InvaderV2.swf
--swf-header 480:432:60:000000
+-swf export/flash/bin/InvaderV7.swf
+-swf-header 480:432:60:0D0E34
 -cp export/flash/haxe
 -debug

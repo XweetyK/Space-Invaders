@@ -34,16 +34,20 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/images/disp.png");
+		urls.push ("assets/images/barricade.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/GameOverImg.png");
+		urls.push ("assets/images/disp.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/images-go-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/ovni.png");
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/PlayerNave.png");
@@ -155,19 +159,19 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "87",
-			company: "chikoritos",
-			file: "InvaderV2",
+			build: "383",
+			company: "Chikoritos",
+			file: "InvaderV7",
 			fps: 60,
-			name: "InvaderV2",
+			name: "InvaderV7",
 			orientation: "",
 			packageName: "com.example.myapp",
-			version: "0.0.1",
+			version: "0.7",
 			windows: [
 				
 				{
 					antialiasing: 0,
-					background: 0,
+					background: 855604,
 					borderless: false,
 					depthBuffer: false,
 					display: 0,
@@ -177,7 +181,7 @@ class ApplicationMain {
 					parameters: "{}",
 					resizable: true,
 					stencilBuffer: true,
-					title: "InvaderV2",
+					title: "InvaderV7",
 					vsync: true,
 					width: 480,
 					x: null,
@@ -197,7 +201,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 480, 432, "000000");
+		openfl.Lib.embed (null, 480, 432, "0D0E34");
 		#end
 		#else
 		create ();
