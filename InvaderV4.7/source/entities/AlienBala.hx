@@ -24,6 +24,7 @@ class AlienBala extends FlxSprite
 		animation.add("alien", [0, 1, 0, 1], 3, true);
 		this.animation.play("alien");
 		updateHitbox();
+		Reg.balaCont = 0;
 	}
 	override public function update(elapsed:Float):Void 
 	{
@@ -32,12 +33,12 @@ class AlienBala extends FlxSprite
 		{
 			//destructor y contador de disparos
 			destroy();
-			Reg.balaCont--;
 		}
 	}
 	override public function destroy():Void
 	{
 		FlxG.state.remove(this);
 		super.destroy();
+		Reg.balaCont--;
 	}
 }

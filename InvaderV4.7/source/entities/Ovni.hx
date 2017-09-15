@@ -57,3 +57,9 @@ class Ovni extends FlxSprite
 	{ // numero random para aparicion aleatoria
 		clock = 1 + FlxG.random.float() * 300;
 	}
+	
+	function get_disp():AlienBala 
+	{
+		return disp;
+	}
+}

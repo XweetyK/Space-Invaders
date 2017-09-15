@@ -31,6 +31,7 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+		
 		Inicializar();
 	}
 
@@ -38,7 +39,7 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		//Texto contador de vidas
-		playerContVidas.text = "Lifes: " + playerVidas;
+		playerContVidas.text = "Lives: " + playerVidas;
 		//Texto contador de score
 		playerContScore.text = "Score: " + player.playerScore;
 		gameOver();
@@ -71,7 +72,7 @@ class PlayState extends FlxState
 		{
 			if (FlxG.overlap(player.PlayerBala,alien.members[i]))
 			{
-				alien.members[i].kill();
+				alien.members[i].destroy();
 				player.PlayerBala.kill();
 				player.playerAddScore(25);
 			}
@@ -81,7 +82,7 @@ class PlayState extends FlxState
 		{
 			if (FlxG.overlap(player, alien.members[i]))
 			{
-				alien.members[i].kill();
+				alien.members[i].destroy();
 				playerDeath();
 				player.playerAddScore(25);
 			}
@@ -93,7 +94,6 @@ class PlayState extends FlxState
 			{
 				playerDeath();
 				alien.members[i].disp.destroy();
-				Reg.balaCont--;
 			}
 		}
 		//si los aliens llegan al margen inferior game over
@@ -101,7 +101,6 @@ class PlayState extends FlxState
 		{
 		if (alien.members[i].y==135)
 			{
-				playerDeath();
 				alien.members[i].y=15;
 				cleanScreen();
 				playerLose.revive();
@@ -121,25 +120,21 @@ class PlayState extends FlxState
 			{
 				b1.destroy();
 				alien.members[i].disp.destroy();
-				Reg.balaCont--;
 			}
 		if (FlxG.overlap(alien.members[i].disp,b2))
 			{
 				b2.destroy();
 				alien.members[i].disp.destroy();
-				Reg.balaCont--;
 			}
 		if (FlxG.overlap(alien.members[i].disp,b3))
 			{
 				b3.destroy();
 				alien.members[i].disp.destroy();
-				Reg.balaCont--;
 			}
 		if (FlxG.overlap(alien.members[i].disp,b4))
 			{
 				b4.destroy();
 				alien.members[i].disp.destroy();
-				Reg.balaCont--;
 			}
 		}
 		//Collision Alien - barreras
@@ -148,22 +143,22 @@ class PlayState extends FlxState
 		if (FlxG.overlap(alien.members[i],b1))
 			{
 				b1.destroy();
-				alien.members[i].destroy();
+				alien.members[i].kill();
 			}
 		if (FlxG.overlap(alien.members[i],b2))
 			{
 				b2.destroy();
-				alien.members[i].destroy();
+				alien.members[i].kill();
 			}
 		if (FlxG.overlap(alien.members[i],b3))
 			{
 				b3.destroy();
-				alien.members[i].destroy();
+				alien.members[i].kill();
 			}
 		if (FlxG.overlap(alien.members[i],b4))
 			{
 				b4.destroy();
-				alien.members[i].destroy();
+				alien.members[i].kill();
 			}
 		}
 	}
@@ -174,7 +169,7 @@ class PlayState extends FlxState
 		alien.kill();
 		for (i in 0... alien.members.length)
 		{
-			alien.members[i].disp.kill();
+			alien.members[i].disp.destroy();
 		}
 		player.PlayerBala.destroy();
 		player.destroy();
@@ -257,6 +252,8 @@ class PlayState extends FlxState
 			}
 		}
 	}
+	
+	
 	override public function destroy():Void
 	{
 		FlxG.state.remove(this);
