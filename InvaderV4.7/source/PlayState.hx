@@ -24,25 +24,9 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		alien = new FlxTypedGroup<Alien>();
-		var color:Array<Int>;
-		color = [FlxColor.BLUE, FlxColor.GREEN, FlxColor.GREEN, FlxColor.YELLOW, FlxColor.RED];
-		for (i in 0...50)
-		{
-			a = new Alien(10 + (i % 10) * 10, 12 + Std.int(i / 10) * 10, color[Std.int(i / 10)]);
-			alien.add(a);
-		}
-		player = new Nave(72+8, 132);
-		add(alien);
-		add(player);
-		playerLose = new FlxText(1, 65, 480, "You died! Press R to restart", 9);
-		playerContVidas = new FlxText(1, 1, 480, "", 9);
-		playerContScore = new FlxText(1,125, 480, "", 8);
-		add(playerContVidas);
-		add(playerContScore);
-		add(playerLose);
-		playerLose.kill();
-		playerVidas = Reg.cantVidas;
+		Inicializar();
+		
+		
 	}
 
 	override public function update(elapsed:Float):Void
@@ -52,6 +36,7 @@ class PlayState extends FlxState
 		playerContVidas.text = "Lifes: " + playerVidas;
 		//Texto contador de score
 		playerContScore.text = "Score: " + player.playerScore;
+		gameOver();
 		collision();
 	}
 
@@ -76,6 +61,7 @@ class PlayState extends FlxState
 	
 	function collision() 
 	{
+		
 		//Collision Playerbala - Aliens
 		for (i in 0...alien.members.length)
 		{
@@ -109,12 +95,56 @@ class PlayState extends FlxState
 	//Mata los aliens, las balas de los aliens y las balas del player
 	function cleanScreen():Void 
 	{
-		for (i in 0...alien.members.length)
-		{
-			alien.members[i].disp.kill();
-		}
 		alien.kill();
-		player.PlayerBala.kill();
+		player.PlayerBala.destroy();
+		player.destroy();
+	}
+	//Iniciar el nivel
+	function Inicializar():Void 
+	{
+		alien = new FlxTypedGroup<Alien>();
+		var color:Array<Int>;
+		color = [FlxColor.BLUE, FlxColor.GREEN, FlxColor.GREEN, FlxColor.YELLOW, FlxColor.RED];
+		for (i in 0...50)
+		{
+			a = new Alien(10 + (i % 10) * 10, 12 + Std.int(i / 10) * 10, color[Std.int(i / 10)]);
+			alien.add(a);
+		}
+		player = new Nave(72 + 8, 132);
+		playerLose = new FlxText(1, 65, 480, "You died! Press R to restart", 9);
+		playerContVidas = new FlxText(1, 1, 480, "", 9);
+		playerContScore = new FlxText(1, 125, 480, "", 8);
+		
+		add(alien);
+		add(player);
+		player.kill();
+		alien.kill();
+		player.revive();
+		alien.revive();
+		
+		playerLose.kill();
+		playerVidas = Reg.cantVidas;
+		
+		add(playerContVidas);
+		add(playerContScore);
+		add(playerLose);
+	}
+	
+	function gameOver():Void 
+	{
+		//Restart
+		if (playerLose.alive)
+		{
+			if (FlxG.keys.pressed.R)
+			{
+			playerLose.kill();
+			playerContVidas.destroy();
+			playerContScore.destroy();
+			playerLose.destroy();
+			alien.destroy();
+			Inicializar();
+			}
+		}
 	}
 
 }
