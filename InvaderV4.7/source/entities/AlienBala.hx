@@ -38,7 +38,6 @@ class AlienBala extends FlxSprite
 	override public function destroy():Void
 	{
 		FlxG.state.remove(this);
-		//copiar es aprender ?????
 		super.destroy();
 	}
 }

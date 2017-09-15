@@ -26,26 +26,26 @@ class Alien extends FlxSprite
 		loadGraphic(AssetPaths.test__png, true, 8, 8);
 		color = Color;
 		//animacion alien
-		animation.add("alien", [0, 1, 0, 1], 3, true);
+		animation.add("alien", [0, 1, 2, 3], 3, true);
 		this.animation.play("alien");
 		
 		origen = X;
-		velocity.x = 60;
+		velocity.x = 30;
 		
 	}
 	
 	override public function update(elapsed:Float):Void
 	{
 		//Movimiento zig zag
-		if (x < origen - 5)
+		if (x < origen - 7)
 		{
-			x = origen - 5;
+			x = origen - 7;
 			velocity.x = -velocity.x;
 			y = y + 5;
 		}
-		if (x > origen + 48)
+		if (x > origen + 22)
 		{
-			x = origen + 48;
+			x = origen + 22;
 			velocity.x = -velocity.x;
 			y = y + 5;
 		}

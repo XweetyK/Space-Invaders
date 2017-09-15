@@ -26,7 +26,7 @@ class ApplicationMain {
 	
 	public static function main () {
 		
-		flash.Lib.setPackage ("chikoritos", "InvaderV7", "com.example.myapp", "0.7");
+		flash.Lib.setPackage ("Chikoritos", "InvaderV7", "com.example.myapp", "0.7");
 		
 		
 		#if ios
@@ -129,7 +129,7 @@ class ApplicationMain {
 			},
 			480, 432, 
 			60, 
-			0,
+			855604,
 			(true ? flash.Lib.HARDWARE : 0) |
 			(true ? flash.Lib.ALLOW_SHADERS : 0) |
 			(false ? flash.Lib.REQUIRE_SHADERS : 0) |
@@ -318,7 +318,7 @@ class ApplicationMain {
 	public static function main () {
 		
 		#if openfl
-		flash.Lib.setPackage ("chikoritos", "InvaderV7", "com.example.myapp", "0.7");
+		flash.Lib.setPackage ("Chikoritos", "InvaderV7", "com.example.myapp", "0.7");
 		
 		#end
 		
@@ -515,8 +515,8 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "225",
-			company: "chikoritos",
+			build: "324",
+			company: "Chikoritos",
 			file: "InvaderV7",
 			fps: 60,
 			name: "InvaderV7",
@@ -527,7 +527,7 @@ class ApplicationMain {
 				
 				{
 					antialiasing: 0,
-					background: 0,
+					background: 855604,
 					borderless: false,
 					depthBuffer: false,
 					display: 0,
